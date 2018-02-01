@@ -1,24 +1,50 @@
-server:
-  port: 8761
-eureka:
-  environment: prod
-  datacenter: Data Center:8761
-  server:
-    renewal-percent-threshold: 0.0
-  instance:
-    hostname: localhost
+druid:
+      url: jdbc:mysql://localhost:3306/zuul_ouath2?characterEncoding=utf8&useSSL=true
+      driver-class: com.mysql.jdbc.Driver
+      username: root
+      password: 111111
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      filters: stat,wall,slf4j
 
+redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 9999
+
+
+eureka:
   client:
-    registerWithEureka: false
     fetchRegistry: false
+    healthcheck:
+      enabled: true
     serviceUrl:
-      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
-spring:
-  application:
-    name: microservice-discovery-eureka-service
+      defaultZone: http://admin:admin@localhost:8761/eureka
+#  instance:
+#    prefer-ip-address: true
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+
+
+
+logging.level.org.springframework.security: DEBUG
+
+logging.leve.org.springframework: DEBUG
+
+
 security:
-  basic:
-    enabled: true
-  user:
-    name: admin
-    password: admin
+  oauth2:
+    resource:
+      filter-order: 3
+
+mybatis:
+  type-aliases-package: com.springCloud.domain
+  mapper-locations: classpath:mapper/*.xml
+  mappers: com.springCloud.dao.**
+  configuration-properties:
+    offsetAsPageNum: true
+    rowBoundsWithCount: true
+    reasonable: true
