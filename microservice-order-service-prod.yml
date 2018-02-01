@@ -1,3 +1,6 @@
+spring:
+  application:
+      name: microservice-order-service
 
 management.security.enabled: false
 
