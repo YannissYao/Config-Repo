@@ -11,12 +11,13 @@ eureka:
 
 
 feign.hystirx.enable: true
-security:
-  oauth2:
-    resource:
-      id: microservice-order-service
-      user-info-uri: http://localhost:8080/uaa/user
-      prefer-token-info: false
+
+# security:
+#   oauth2:
+#     resource:
+#       id: microservice-order-service
+#       user-info-uri: http://localhost:8080/uaa/user
+#       prefer-token-info: false
 
 logging.level.org.springframework.security: INFO
 
