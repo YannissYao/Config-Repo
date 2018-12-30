@@ -2,7 +2,7 @@ druid:
       url: jdbc:mysql://localhost:3306/zuul_ouath2?characterEncoding=utf8&useSSL=true
       driver-class: com.mysql.jdbc.Driver
       username: root
-      password: 111111
+      password: root
       initial-size: 1
       min-idle: 1
       max-active: 20
